@@ -32,13 +32,16 @@ class bon_voyage {
 		ensure	=>	'link',
 		target	=>	'/home/monitor/scripts/memory_check.sh',
 		}
-	
-	file { '/home/monitor/crontab.txt':
-		ensure	=>	'file',
-		content	=> "*/10 * * * * /home/monitor/src/my_memory_check.sh",
-		} # Crontab Creation
+		
+	cron { 'mem_check':
+		command	=>	'/home/monitor/src/my_memory_check.sh',
+		user	=>	'monitor',
+		hour	=>	0,
+		minute	=>	10,	
+		} # Crontab
 	
 	class sethostname {
+	
 		file { '/etc/hostname':
 			ensure  => 'present',
 			owner   => 'root',
@@ -47,11 +50,13 @@ class bon_voyage {
 			content => "bpx.server.local",
 			notify  => Exec['set-hostname'],
 		}
+		
 		exec { 'set-hostname':
 			command => '/bin/hostname -F /etc/hostname',
 			unless  => "/usr/bin/test `hostname` = `/bin/cat /etc/hostname`",
 			notify  => Service[:params::service_name],
 		}
+	
 	} # Bonus: Set Hostname
 	
 	class { 'timezone':
