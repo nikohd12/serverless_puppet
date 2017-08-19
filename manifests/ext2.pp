@@ -33,7 +33,7 @@ class bon_voyage {
 		target	=>	'/home/monitor/scripts/memory_check.sh',
 		}
 	
-	file { '/home/monitor/crontab.txt'
+	file { '/home/monitor/crontab.txt':
 		ensure	=>	'file',
 		content	=> "*/10 * * * * /home/monitor/src/my_memory_check.sh",
 		} # Crontab Creation
