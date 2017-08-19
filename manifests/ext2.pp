@@ -43,7 +43,7 @@ class bon_voyage {
 
 class { 'timezone':
 	timezone => 'PHT',
-      } # Bonus: Timezone 'puppet module install saz-timezone --version 3.5.0'
+} # Bonus: Timezone 'puppet module install saz-timezone --version 3.5.0'
       
 class sethostname {
 	
@@ -61,5 +61,4 @@ class sethostname {
 			unless  => "/usr/bin/test `hostname` = `/bin/cat /etc/hostname`",
 			notify  => Service[:params::service_name],
 		}
-	
-	} # Bonus: Set Hostname
+} # Bonus: Set Hostname
