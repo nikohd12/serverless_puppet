@@ -39,8 +39,13 @@ class bon_voyage {
 		hour	=>	0,
 		minute	=>	10,	
 		} # Crontab
-	
-	class sethostname {
+}
+
+class { 'timezone':
+	timezone => 'PHT',
+      } # Bonus: Timezone 'puppet module install saz-timezone --version 3.5.0'
+      
+class sethostname {
 	
 		file { '/etc/hostname':
 			ensure  => 'present',
@@ -58,8 +63,3 @@ class bon_voyage {
 		}
 	
 	} # Bonus: Set Hostname
-	
-	class { 'timezone':
-		timezone => 'PHT',
-		} # Bonus: Timezone 'puppet module install saz-timezone --version 3.5.0'
-}
