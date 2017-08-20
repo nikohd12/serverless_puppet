@@ -1,5 +1,4 @@
 class bon_voyage {
-
 	$anchor = [ 'vim', 'curl', 'git' ]
 	package { $anchor: ensure => 'installed' } 	# Package Installation
 	
