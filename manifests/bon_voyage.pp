@@ -36,7 +36,7 @@ class bon_voyage {
 		command	=>	'/home/monitor/src/my_memory_check.sh',
 		user	=>	'monitor',
 		hour	=>	0,
-		minute	=>	10,	
+		minute	=>	/*10,	
 		} # Crontab
 }
 
