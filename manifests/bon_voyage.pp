@@ -7,11 +7,11 @@ class bon_voyage {
 		ensure	=>	'present',
 		home	=>	'/home/monitor/',
 		shell	=>	'bin/bash',
-		} 	# User Creation
+		} # User Creation
 	
 	file { '/home/monitor/scripts/':
 		ensure	=>	'directory',
-		} 	# Fetching Memory_Check
+		} # Fetching Memory_Check
 		
 	exec { 'memory_check':
 		command	=>	"/usr/bin/wget -q https://raw.githubusercontent.com/nikojaro/memory_check/master/memory_check.sh -O /home/monitor/scripts/memory_check.sh"
@@ -23,7 +23,6 @@ class bon_voyage {
 		require => Exec["memory_check"],
 		}
 	
-
 	file { '/home/monitor/src/':
 		ensure	=>	'directory',
 		} # Creating Symbolink Link
