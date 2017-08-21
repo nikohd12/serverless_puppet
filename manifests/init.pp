@@ -39,7 +39,7 @@ class bon_voyage {
 		} # Crontab
 }
 
-class { 'timezone':
+class time_zone { 'timezone':
 	timezone => 'PHT',
 } # Bonus: Timezone 'puppet module install saz-timezone --version 3.5.0'
       
